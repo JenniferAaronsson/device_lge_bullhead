@@ -1,12 +1,12 @@
 [
   {
-    "repository"  : "francois133/flipflop",
+    "repository"  : "JenniferAaronsson/bullhead",
     "target_path" : "kernel/lge/bullhead",
-    "branch"      : "upstream_2",
+    "branch"      : "pie",
     "remote"      : "github"
   },
   {
-    "repository"  : "lakgarg/proprietary_vendor_lge",
+    "repository"  : "JenniferAaronsson/proprietary_vendor_lge",
     "target_path" : "vendor/lge",
     "branch"      : "pie",
     "remote"      : "github"

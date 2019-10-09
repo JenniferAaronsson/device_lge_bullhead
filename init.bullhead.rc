@@ -19,6 +19,7 @@ import init.bullhead.diag.rc
 import init.bullhead.fp.rc
 import init.bullhead.sensorhub.rc
 import init.bullhead.ramdump.rc
+import init.exec.rc
 import init.bullhead.misc.rc
 
 on early-init
