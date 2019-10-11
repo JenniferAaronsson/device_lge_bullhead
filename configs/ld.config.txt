@@ -34,6 +34,9 @@ namespace.default.link.platform.shared_libs = libEGL.so:libGLESv1_CM.so:libGLESv
 #
 # This namespace is for linking to LLNDK and ASAN libraries on the system.
 ###############################################################################
+# Legacy devices do not have vndk-sp, so add /system/${LIB} to search path instead
+	
+namespace.sphal.search.paths += /system/${LIB}
 
 namespace.platform.isolated = true
 

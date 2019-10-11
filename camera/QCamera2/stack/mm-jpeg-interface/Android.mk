@@ -12,8 +12,7 @@ LOCAL_CFLAGS+= -D_ANDROID_
 LOCAL_CFLAGS += -Wall -Wextra -Werror -Wno-unused-parameter -Wno-error -Wno-sign-conversion -Wno-unused-value -Wno-pointer-bool-conversion
 
 LOCAL_C_INCLUDES+= $(kernel_includes)
-LOCAL_ADDITIONAL_DEPENDENCIES := $(common_deps)
-
+LOCAL_HEADER_LIBRARIES := generated_kernel_headers
 LOCAL_C_INCLUDES += \
     frameworks/native/include/media/openmax \
     $(LOCAL_PATH)/inc \
