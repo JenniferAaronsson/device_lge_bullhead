@@ -34,7 +34,7 @@ WITH_DEXPREOPT := true
 DONT_DEXPREOPT_PREBUILTS := true
 
 # Inline kernel building
-KERNEL_TOOLCHAIN :=  $(shell pwd)/prebuilts/gcc_toolchain_10/bin
+KERNEL_TOOLCHAIN := $(shell pwd)/prebuilts/gcc_toolchain_10/bin
 KERNEL_TOOLCHAIN_PREFIX := aarch64-linux-gnu-
 TARGET_KERNEL_SOURCE := kernel/lge/bullhead
 TARGET_KERNEL_CONFIG := jennifer_defconfig
@@ -194,4 +194,5 @@ endif
 # Legacy blob support
 TARGET_PROCESS_SDK_VERSION_OVERRIDE += \
     /vendor/bin/mm-qcamera-daemon=27
+
 TARGET_USES_ALTERNATIVE_MANUAL_NETWORK_SELECT := true
