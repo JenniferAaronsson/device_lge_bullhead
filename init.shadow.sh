@@ -21,13 +21,13 @@ function get-set-forall() {
 setprop dalvik.vm.heapminfree 2m
 
 # virtual memory
-write /proc/sys/vm/swappiness 100
+write /proc/sys/vm/swappiness 60
 write /proc/sys/vm/dirty_background_ratio 4
 write /proc/sys/vm/dirty_ratio 10
 write /proc/sys/vm/dirty_writeback_centisecs 3000
 
 # lmk
-write /sys/module/lowmemorykiller/parameters/minfree "18432,23040,27648,32256,36864,46080"
+write /sys/module/lowmemorykiller/parameters/minfree "9338,14007,18676,22345,28014,32683"
 
 # backlight dimmer
 write /sys/module/mdss_fb/parameters/backlight_dimmer 1
@@ -36,13 +36,14 @@ write /sys/module/mdss_fb/parameters/backlight_dimmer 1
 write f > /proc/irq/default_smp_affinity
 
 # io_sched
-write /sys/block/mmcblk0/queue/scheduler noop
+write /sys/block/mmcblk0/queue/scheduler cfq
 
 # set default schedTune value for foreground/top-app
 write /dev/stune/foreground/schedtune.prefer_idle 1
-write /dev/stune/foreground/schedtune.boost 5
-write /dev/stune/top-app/schedtune.boost 10
 write /dev/stune/top-app/schedtune.prefer_idle 1
+write /dev/stune/foreground/schedtune.sched_boost 5
+write /dev/stune/top-app/schedtune.sched_boost 10
+write /sys/module/cpu_boost/parameters/dynamic_stune_boost 10
 
 # disable thermal bcl hotplug to switch governor
 write /sys/module/msm_thermal/core_control/enabled 0
@@ -55,6 +56,10 @@ write /sys/devices/system/cpu/cpu5/online 1
 # switch to schedfreq
 write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor "schedutil"
 write /sys/devices/system/cpu/cpu4/cpufreq/scaling_governor "schedutil"
+write /sys/devices/system/cpu/cpu0/cpufreq/schedutil/up_rate_limit_us "500"
+write /sys/devices/system/cpu/cpu0/cpufreq/schedutil/down_rate_limit_us "20000"
+write /sys/devices/system/cpu/cpu4/cpufreq/schedutil/up_rate_limit_us "500"
+write /sys/devices/system/cpu/cpu4/cpufreq/schedutil/down_rate_limit_us "20000"
 
 # re-enable thermal and BCL hotplug
 write /sys/module/msm_thermal/core_control/enabled 1
