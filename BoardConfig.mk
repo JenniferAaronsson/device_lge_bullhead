@@ -38,7 +38,7 @@ DONT_DEXPREOPT_PREBUILTS := true
 KERNEL_TOOLCHAIN := $(shell pwd)/prebuilts/gcc_toolchain_10/bin
 KERNEL_TOOLCHAIN_PREFIX := aarch64-linux-gnu-
 TARGET_KERNEL_SOURCE := kernel/lge/bullhead
-TARGET_KERNEL_CONFIG := flipflop_defconfig
+TARGET_KERNEL_CONFIG := jennifer_defconfig
 BOARD_KERNEL_IMAGE_NAME := Image.gz-dtb
 TARGET_COMPILE_WITH_MSM_KERNEL := true
 TARGET_KERNEL_ARCH := arm64
@@ -191,9 +191,6 @@ endif
 # Legacy blob support
 TARGET_PROCESS_SDK_VERSION_OVERRIDE += \
     /vendor/bin/mm-qcamera-daemon=27
-
-# Enable workaround for slow rom flash
-BOARD_SUPPRESS_SECURE_ERASE := true
 
 TARGET_USES_ALTERNATIVE_MANUAL_NETWORK_SELECT := true
 

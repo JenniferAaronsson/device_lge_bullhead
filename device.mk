@@ -35,12 +35,14 @@ TARGET_USES_CHINOOK_SENSORHUB := false
 
 PRODUCT_COPY_FILES += \
     device/lge/bullhead/init.bullhead.rc:root/init.bullhead.rc \
+    device/lge/bullhead/init.exec.rc:root/init.exec.rc \
     device/lge/bullhead/init.bullhead.usb.rc:root/init.bullhead.usb.rc \
     device/lge/bullhead/fstab.bullhead:root/fstab.bullhead \
     device/lge/bullhead/ueventd.bullhead.rc:root/ueventd.bullhead.rc \
     device/lge/bullhead/init.recovery.bullhead.rc:root/init.recovery.bullhead.rc \
     device/lge/bullhead/init.bullhead.ramdump.rc:root/init.bullhead.ramdump.rc \
     device/lge/bullhead/init.bullhead.fp.rc:root/init.bullhead.fp.rc \
+    device/lge/bullhead/init.shadow.sh:$(TARGET_COPY_OUT_VENDOR)/bin/init.shadow.sh \
     device/lge/bullhead/init.qcom.devwait.sh:$(TARGET_COPY_OUT_VENDOR)/bin/init.qcom.devwait.sh \
     device/lge/bullhead/init.qcom.devstart.sh:$(TARGET_COPY_OUT_VENDOR)/bin/init.qcom.devstart.sh
 
