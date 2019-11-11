@@ -41,7 +41,7 @@ LOCAL_C_INCLUDES+= \
         $(LOCAL_PATH)/../../../mm-image-codec/qomx_core
 
 LOCAL_C_INCLUDES+= $(kernel_includes)
-LOCAL_HEADER_LIBRARIES := generated_kernel_headers
+LOCAL_ADDITIONAL_DEPENDENCIES := $(common_deps)
 
 LOCAL_CFLAGS += -DCAMERA_ION_HEAP_ID=ION_IOMMU_HEAP_ID
 ifeq ($(TARGET_BOARD_PLATFORM),msm8974)
@@ -99,7 +99,7 @@ else
         LOCAL_CFLAGS += -DCAMERA_ION_FALLBACK_HEAP_ID=ION_CAMERA_HEAP_ID
         LOCAL_CFLAGS += -DNUM_RECORDING_BUFFERS=5
 endif
-LOCAL_CFLAGS += -Wall -Wextra 
+LOCAL_CFLAGS += -Wall -Wextra -Werror -Wno-error -Wno-sign-conversion -Wno-unused-value -Wno-pointer-bool-conversion
 
 LOCAL_SHARED_LIBRARIES:= \
          liblog libcutils libdl libmmcamera_interface
@@ -151,7 +151,7 @@ LOCAL_C_INCLUDES+= \
         $(LOCAL_PATH)/../../../mm-image-codec/qomx_core
 
 LOCAL_C_INCLUDES+= $(kernel_includes)
-LOCAL_HEADER_LIBRARIES := generated_kernel_headers
+LOCAL_ADDITIONAL_DEPENDENCIES := $(common_deps)
 
 LOCAL_CFLAGS += -DCAMERA_ION_HEAP_ID=ION_IOMMU_HEAP_ID
 ifeq ($(TARGET_BOARD_PLATFORM),msm8974)
@@ -209,7 +209,7 @@ else
         LOCAL_CFLAGS += -DCAMERA_ION_FALLBACK_HEAP_ID=ION_CAMERA_HEAP_ID
         LOCAL_CFLAGS += -DNUM_RECORDING_BUFFERS=5
 endif
-LOCAL_CFLAGS += -Wall -Wextra 
+LOCAL_CFLAGS += -Wall -Wextra -Werror
 
 LOCAL_SHARED_LIBRARIES:= \
          libcutils libdl libmmcamera_interface liblog
@@ -228,7 +228,7 @@ LOCAL_SRC_FILES := src/cam_semaphore_tests.cpp
 
 LOCAL_C_INCLUDES += $(LOCAL_PATH)/../common
 
-LOCAL_CFLAGS := -Wall -Wextra 
+LOCAL_CFLAGS := -Wall -Wextra -Werror
 
 LOCAL_MODULE := cam_semaphore_tests
 LOCAL_MODULE_TAGS := tests

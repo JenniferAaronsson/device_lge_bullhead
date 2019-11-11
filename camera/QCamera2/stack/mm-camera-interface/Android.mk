@@ -22,7 +22,7 @@ ifneq (,$(filter msm8974 msm8916 msm8226 msm8610 msm8916 apq8084 msm8084 msm8994
     LOCAL_CFLAGS += -DVENUS_PRESENT
 endif
 
-LOCAL_CFLAGS += -D_ANDROID_
+LOCAL_CFLAGS += -D_ANDROID_ -Wno-error -Wno-sign-conversion -Wno-unused-value
 LOCAL_COPY_HEADERS_TO := mm-camera-interface
 LOCAL_COPY_HEADERS += ../common/cam_intf.h
 LOCAL_COPY_HEADERS += ../common/cam_types.h
@@ -36,7 +36,7 @@ LOCAL_C_INCLUDES := \
 
 LOCAL_CFLAGS += -DCAMERA_ION_HEAP_ID=ION_IOMMU_HEAP_ID
 LOCAL_C_INCLUDES+= $(kernel_includes)
-LOCAL_HEADER_LIBRARIES := generated_kernel_headers
+LOCAL_ADDITIONAL_DEPENDENCIES := $(common_deps)
 
 LOCAL_C_INCLUDES += hardware/qcom/media/msm8974/mm-core/inc
 
@@ -44,7 +44,7 @@ ifneq (1,$(filter 1,$(shell echo "$$(( $(PLATFORM_SDK_VERSION) >= 17 ))" )))
   LOCAL_CFLAGS += -include bionic/libc/kernel/common/linux/socket.h
   LOCAL_CFLAGS += -include bionic/libc/kernel/common/linux/un.h
 endif
-LOCAL_CFLAGS += -Wall -Wextra -Wno-error=pointer-bool-conversion 
+LOCAL_CFLAGS += -Wall -Wextra -Werror -Wno-error -Wno-sign-conversion -Wno-unused-value -Wno-pointer-bool-conversion
 
 LOCAL_SRC_FILES := $(MM_CAM_FILES)
 

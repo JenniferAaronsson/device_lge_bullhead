@@ -8,7 +8,7 @@ LOCAL_PATH := $(MM_JPEG_TEST_PATH)
 LOCAL_MODULE_TAGS := optional
 
 LOCAL_CFLAGS := -DCAMERA_ION_HEAP_ID=ION_IOMMU_HEAP_ID
-LOCAL_CFLAGS += -Wall -Wextra -Wno-unused-parameter
+LOCAL_CFLAGS += -Wall -Wextra -Werror -Wno-unused-parameter
 LOCAL_CFLAGS += -D_ANDROID_
 
 ifeq ($(strip $(TARGET_USES_ION)),true)
@@ -26,7 +26,7 @@ LOCAL_C_INCLUDES += $(OMX_CORE_DIR)/qexif
 LOCAL_C_INCLUDES += $(OMX_CORE_DIR)/qomx_core
 
 LOCAL_C_INCLUDES+= $(kernel_includes)
-LOCAL_HEADER_LIBRARIES := generated_kernel_headers
+LOCAL_ADDITIONAL_DEPENDENCIES := $(common_deps)
 
 LOCAL_SRC_FILES := mm_jpeg_test.c
 
@@ -65,7 +65,7 @@ LOCAL_C_INCLUDES += $(OMX_CORE_DIR)/qexif
 LOCAL_C_INCLUDES += $(OMX_CORE_DIR)/qomx_core
 
 LOCAL_C_INCLUDES+= $(kernel_includes)
-LOCAL_HEADER_LIBRARIES := generated_kernel_headers
+LOCAL_ADDITIONAL_DEPENDENCIES := $(common_deps)
 
 LOCAL_SRC_FILES := mm_jpegdec_test.c
 
