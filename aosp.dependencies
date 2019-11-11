@@ -1,8 +1,8 @@
 [
   {
-    "repository"  : "JenniferAaronsson/bullhead",
+    "repository"  : "lakgarg/flipflop-1",
     "target_path" : "kernel/lge/bullhead",
-    "branch"      : "ten",
+    "branch"      : "flipflop",
     "remote"      : "github"
   },
   {

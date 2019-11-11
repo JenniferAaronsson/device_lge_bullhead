@@ -35,8 +35,6 @@ TARGET_USES_CHINOOK_SENSORHUB := false
 
 PRODUCT_COPY_FILES += \
     device/lge/bullhead/init.bullhead.rc:root/init.bullhead.rc \
-    device/lge/bullhead/init.exec.rc:root/init.exec.rc \
-    device/lge/bullhead/init.shadow.sh:root/init.shadow.sh \
     device/lge/bullhead/init.bullhead.usb.rc:root/init.bullhead.usb.rc \
     device/lge/bullhead/fstab.bullhead:root/fstab.bullhead \
     device/lge/bullhead/ueventd.bullhead.rc:root/ueventd.bullhead.rc \
