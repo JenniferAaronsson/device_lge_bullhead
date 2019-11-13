@@ -65,4 +65,4 @@ write /sys/devices/system/cpu/cpu4/cpufreq/schedutil/down_rate_limit_us "20000"
 write /sys/module/msm_thermal/core_control/enabled 1
 get-set-forall /sys/devices/soc.0/qcom,bcl.*/mode enable
 
-swapon /data/swapfile.swp
+#swapon /data/swapfile.swp
