@@ -203,6 +203,10 @@ PRODUCT_PACKAGES += \
     android.hardware.memtrack@1.0-impl \
     android.hardware.memtrack@1.0-service
 
+# Configstore
+PRODUCT_PACKAGES += \
+    android.hardware.configstore@1.1-service
+
 # Light HAL
 PRODUCT_PACKAGES += \
     lights.vts \
@@ -214,6 +218,7 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_PACKAGES += \
     android.hardware.drm@1.0-impl \
+    android.hardware.drm@1.0-service
 
 PRODUCT_PACKAGES += \
     libc2dcolorconvert \
@@ -250,10 +255,12 @@ PRODUCT_PACKAGES += \
     rmnetcli
 
 PRODUCT_PACKAGES += \
-    android.hardware.audio@2.0-service \
     android.hardware.audio@2.0-impl \
+    android.hardware.audio@2.0-service \
     android.hardware.soundtrigger@2.0-impl \
-    android.hardware.audio.effect@2.0-impl
+    android.hardware.soundtrigger@2.0-service \
+    android.hardware.audio.effect@2.0-impl \
+    android.hardware.audio.effect@2.0-service
 
 PRODUCT_PACKAGES += \
     android.hardware.graphics.composer@2.1-impl \
@@ -281,7 +288,8 @@ PRODUCT_PACKAGES += \
 
 # Vibrator HAL
 PRODUCT_PACKAGES += \
-    android.hardware.vibrator@1.0-impl
+    android.hardware.vibrator@1.0-impl \
+    android.hardware.vibrator@1.0-service
 
 # Fingerprint HIDL implementation
 PRODUCT_PACKAGES += \
@@ -331,13 +339,14 @@ PRODUCT_PACKAGES += \
     sensors.bullhead \
     activity_recognition.bullhead \
     android.hardware.sensors@1.0-impl \
+    android.hardware.sensors@1.0-service \
     android.hardware.contexthub@1.0-impl.nanohub \
     android.hardware.contexthub@1.0-service
 
 # new gatekeeper HAL
 PRODUCT_PACKAGES += \
     android.hardware.gatekeeper@1.0-impl \
-    android.hardware.gatekeeper@1.0-service   
+    android.hardware.gatekeeper@1.0-service
 
 ifeq ($(TARGET_USES_CHINOOK_SENSORHUB),true)
 PRODUCT_PACKAGES += \
@@ -532,7 +541,8 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 # Bluetooth HAL
 PRODUCT_PACKAGES += \
     libbt-vendor \
-    android.hardware.bluetooth@1.0-impl
+    android.hardware.bluetooth@1.0-impl \
+    android.hardware.bluetooth@1.0-service
 
 # limit dex2oat threads to improve thermals
 PRODUCT_PROPERTY_OVERRIDES += \
