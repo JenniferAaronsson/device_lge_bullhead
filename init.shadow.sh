@@ -21,7 +21,7 @@ function get-set-forall() {
 setprop dalvik.vm.heapminfree 2m
 
 # virtual memory
-write /proc/sys/vm/swappiness 60
+write /proc/sys/vm/swappiness 100
 write /proc/sys/vm/dirty_background_ratio 4
 write /proc/sys/vm/dirty_ratio 10
 write /proc/sys/vm/dirty_writeback_centisecs 3000
@@ -51,7 +51,7 @@ get-set-forall /sys/devices/soc.0/qcom,bcl.*/mode disable
 
 # ensure at most one A57 is online when thermal hotplug is disabled
 write /sys/devices/system/cpu/cpu4/online 1
-write /sys/devices/system/cpu/cpu5/online 1
+write /sys/devices/system/cpu/cpu5/online 0
 
 # switch to schedfreq
 write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor "schedutil"
@@ -60,6 +60,8 @@ write /sys/devices/system/cpu/cpu0/cpufreq/schedutil/up_rate_limit_us "500"
 write /sys/devices/system/cpu/cpu0/cpufreq/schedutil/down_rate_limit_us "20000"
 write /sys/devices/system/cpu/cpu4/cpufreq/schedutil/up_rate_limit_us "500"
 write /sys/devices/system/cpu/cpu4/cpufreq/schedutil/down_rate_limit_us "20000"
+
+write /sys/devices/system/cpu/cpu5/online 1
 
 # re-enable thermal and BCL hotplug
 write /sys/module/msm_thermal/core_control/enabled 1
