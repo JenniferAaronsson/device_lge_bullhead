@@ -70,23 +70,21 @@ static int process_video_encode_hint(void* metadata) {
     }
 
     if (video_encode_metadata.state == 1) {
-        if (is_interactive_governor(governor)) {
-            /* sched and cpufreq params
-             * hispeed freq - 768 MHz
-             * target load - 90
-             * above_hispeed_delay - 40ms
-             * sched_small_tsk - 50
+            /* 1. bus DCVS set to V2 config:
+             *    0x41810000: low power ceil mpbs - 2500
+             *    0x41814000: low power io percent - 50
+             * 2. hysteresis optimization
+             *    0x4180C000: bus dcvs hysteresis tuning
+             *    0x41820000: sample_ms of 10 ms
              */
-            int resource_values[] = {0x2C07, 0x2F5A, 0x2704, 0x4032};
+            int resource_values[] = {0x41810000, 0x9C4, 0x41814000, 0x32,
+                                     0x4180C000, 0x0,   0x41820000, 0xA};
             perform_hint_action(video_encode_metadata.hint_id, resource_values,
                                 ARRAY_SIZE(resource_values));
             return HINT_HANDLED;
-        }
     } else if (video_encode_metadata.state == 0) {
-        if (is_interactive_governor(governor)) {
             undo_hint_action(video_encode_metadata.hint_id);
             return HINT_HANDLED;
-        }
     }
     return HINT_NONE;
 }
@@ -131,19 +129,25 @@ static int process_video_decode_hint(void* metadata) {
 
 // clang-format off
 static int resources_interaction_fling_boost[] = {
-    ALL_CPUS_PWR_CLPS_DIS,
-    SCHED_BOOST_ON,
-    SCHED_PREFER_IDLE_DIS
+        CPUBW_HWMON_MIN_FREQ, 0x33,
+        MIN_FREQ_BIG_CORE_0, 0x3E8,
+        MIN_FREQ_LITTLE_CORE_0, 0x3E8,
+        SCHED_BOOST_ON_V3, 0x1
 };
 
 static int resources_interaction_boost[] = {
-    ALL_CPUS_PWR_CLPS_DIS,
-    SCHED_PREFER_IDLE_DIS
+        MIN_FREQ_BIG_CORE_0, 0x3E8
 };
 
 static int resources_launch[] = {
-    SCHED_BOOST_ON,
-    0x20C
+        SCHED_BOOST_ON_V3, 0x1,
+        MAX_FREQ_BIG_CORE_0, 0xFFF,
+        MAX_FREQ_LITTLE_CORE_0, 0xFFF,
+        MIN_FREQ_BIG_CORE_0, 0xFFF,
+        MIN_FREQ_LITTLE_CORE_0, 0xFFF,
+        CPUBW_HWMON_MIN_FREQ, 0x8C,
+        ALL_CPUS_PWR_CLPS_DIS_V3, 0x1,
+        STOR_CLK_SCALE_DIS, 0x1
 };
 // clang-format on
 
