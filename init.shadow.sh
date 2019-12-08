@@ -36,7 +36,13 @@ write /sys/module/mdss_fb/parameters/backlight_dimmer 1
 write f > /proc/irq/default_smp_affinity
 
 # io_sched
+write /sys/block/mmcblk0/queue/iostats 0
 write /sys/block/mmcblk0/queue/scheduler cfq
+write /sys/block/mmcblk0/queue/iosched/slice_idle 0
+write /sys/block/mmcblk0/queue/read_ahead_kb 2048
+write /sys/block/dm-0/queue/read_ahead_kb 2048
+write /sys/block/dm-1/queue/read_ahead_kb 2048
+write /sys/block/dm-2/queue/read_ahead_kb 2048
 
 # set default schedTune value for foreground/top-app
 write /dev/stune/foreground/schedtune.prefer_idle 1
@@ -67,4 +73,4 @@ write /sys/devices/system/cpu/cpu5/online 1
 write /sys/module/msm_thermal/core_control/enabled 1
 get-set-forall /sys/devices/soc.0/qcom,bcl.*/mode enable
 
-#swapon /data/swapfile.swp
+swapon /data/swapfile.swp
